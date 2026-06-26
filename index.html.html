@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гостевой дом СКАНДИ</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,300;0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'handwriting': ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        paper: '#eaddc6',
+                        'paper-dark': '#d5c5ad',
+                        ink: '#332f29',
+                        'ink-light': '#4a453d',
+                        accent: '#474238',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Стилизация фона страницы (озеро и горы) */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1433838552652-f9a46b332c40?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Текстура пергаментной бумаги */
+        .paper-texture {
+            background-color: #f4e8c1;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.15' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 60px rgba(139, 115, 85, 0.3);
+        }
+
+        /* Рваные края фотографий */
+        .photo-frame {
+            background: white;
+            padding: 8px 8px 24px 8px;
+            box-shadow: 2px 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        .photo-frame::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px dashed rgba(0,0,0,0.1);
+            pointer-events: none;
+            margin: 4px;
+        }
+        .photo-frame:hover {
+            transform: scale(1.05) translateY(-5px) !important;
+            box-shadow: 5px 10px 25px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        /* Декоративные разделители */
+        .divider-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(51, 47, 41, 0.3), transparent);
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4 md:p-8 font-sans text-ink">
+
+    <!-- Главный контейнер (Бумага) -->
+    <main class="paper-texture w-full max-w-7xl rounded-sm p-6 md:p-10 lg:p-16 relative overflow-hidden">
+        
+        <!-- Верхняя часть (Заголовок и логотипы) -->
+        <header class="flex flex-col md:flex-row items-center justify-between mb-12 relative z-10 gap-8">
+            
+            <!-- Левый рисунок (Колосок) -->
+            <div class="hidden md:block w-32 opacity-80">
+                <svg viewBox="0 0 100 200" fill="none" stroke="currentColor" stroke-width="2" class="w-24 h-auto text-ink">
+                    <path d="M50,190 C45,150 40,100 45,50" />
+                    <path d="M48,150 C30,130 20,100 40,120" />
+                    <path d="M46,120 C20,90 15,60 35,90" />
+                    <path d="M45,90 C20,60 10,40 30,60" />
+                    <path d="M49,160 C70,140 80,110 60,130" />
+                    <path d="M48,130 C75,100 85,70 65,100" />
+                    <path d="M46,100 C75,70 85,40 60,70" />
+                    <!-- Зерна -->
+                    <circle cx="35" cy="110" r="3" fill="currentColor" />
+                    <circle cx="28" cy="80" r="3" fill="currentColor" />
+                    <circle cx="65" cy="120" r="3" fill="currentColor" />
+                    <circle cx="72" cy="90" r="3" fill="currentColor" />
+                </svg>
+            </div>
+
+            <!-- Центральный текст -->
+            <div class="text-center flex-1">
+                <h2 class="text-sm md:text-base tracking-[0.3em] uppercase font-semibold text-ink-light mb-2">Гостевой дом</h2>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-ink tracking-wide mb-2">СКАНДИ</h1>
+                
+                <div class="flex items-center justify-center gap-4 my-3 opacity-60">
+                    <div class="h-[1px] w-16 bg-ink"></div>
+                    <i class="fa-solid fa-leaf text-sm"></i>
+                    <div class="h-[1px] w-16 bg-ink"></div>
+                </div>
+
+                <p class="font-handwriting text-3xl md:text-4xl lg:text-5xl text-ink mt-2">Там, где солнце</p>
+            </div>
+
+            <!-- Правый рисунок (Солнце и горы) -->
+            <div class="hidden md:block w-48 opacity-80">
+                 <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-auto text-ink">
+                    <!-- Лучи -->
+                    <line x1="100" y1="40" x2="100" y2="10" stroke-dasharray="2 4"/>
+                    <line x1="80" y1="45" x2="60" y2="20" stroke-dasharray="2 4"/>
+                    <line x1="120" y1="45" x2="140" y2="20" stroke-dasharray="2 4"/>
+                    <line x1="65" y1="60" x2="30" y2="40" stroke-dasharray="2 4"/>
+                    <line x1="135" y1="60" x2="170" y2="40" stroke-dasharray="2 4"/>
+                    <!-- Солнце -->
+                    <path d="M60,80 A40,40 0 0,1 140,80" />
+                    <!-- Горы -->
+                    <path d="M20,95 L60,65 L85,85 L120,55 L160,85 L190,95 Z" fill="rgba(0,0,0,0.05)" />
+                    <path d="M40,95 L70,75 L95,95 Z" />
+                    <path d="M100,95 L130,65 L160,95 Z" />
+                    <!-- Линия горизонта -->
+                    <line x1="10" y1="95" x2="190" y2="95" stroke-width="3" />
+                </svg>
+            </div>
+        </header>
+
+        <!-- Галерея фотографий -->
+        <section class="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 md:gap-4 lg:gap-8 my-16 z-10 relative">
+            
+            <!-- Фото 1 -->
+            <div class="photo-frame -rotate-2 w-72 md:w-48 lg:w-56 xl:w-64">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop" alt="Интерьер" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+            </div>
+            
+            <!-- Фото 2 -->
+            <div class="photo-frame rotate-3 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
+                <img src="https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?q=80&w=800&auto=format&fit=crop" alt="Декор" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+            </div>
+            
+            <!-- Фото 3 (Центральная, Экстерьер) -->
+            <div class="photo-frame -rotate-1 w-80 md:w-56 lg:w-64 xl:w-72 mt-4 md:mt-0 md:-translate-y-4">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop" alt="Фасад гостевого дома" class="w-full h-48 md:h-40 lg:h-48 object-cover">
+            </div>
+            
+            <!-- Фото 4 -->
+            <div class="photo-frame rotate-2 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
+                <img src="https://images.unsplash.com/photo-1416879598555-53dfad6094dd?q=80&w=800&auto=format&fit=crop" alt="Вид" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+            </div>
+            
+            <!-- Фото 5 -->
+            <div class="photo-frame -rotate-3 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
+                <img src="https://images.unsplash.com/photo-1499933374294-4584d31509bf?q=80&w=800&auto=format&fit=crop" alt="Детали" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+            </div>
+
+        </section>
+
+        <!-- Подвал (Контакты и Адрес) -->
+        <footer class="mt-16 pt-8 border-t-2 border-paper-dark border-dashed z-10 relative">
+            <div class="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-4">
+                
+                <!-- Левый блок: Телефон и скидка -->
+                <div class="flex flex-col items-center lg:items-start gap-3">
+                    <a href="tel:+79883408001" class="flex items-center gap-3 text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                        <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        +7 988 340 8001
+                    </a>
+                    <div class="bg-accent text-white px-6 py-2 rounded-full text-sm md:text-base tracking-wide text-center w-full shadow-md">
+                        скидка на проживание<br>от 5-ти дней
+                    </div>
+                </div>
+
+                <!-- Центральный блок: Адрес -->
+                <div class="flex flex-col items-center gap-3 text-center px-4 lg:border-l lg:border-r border-paper-dark lg:px-8">
+                    <i class="fa-solid fa-location-dot text-2xl text-ink mb-1"></i>
+                    <p class="text-sm md:text-base font-semibold tracking-wider leading-relaxed text-ink-light">
+                        ГЕЛЕНДЖИКСКИЙ Р-Н.<br>
+                        ПОС. АРХИПО-ОСИПОВКА<br>
+                        ПЕР. МИХАЙЛОВСКИЙ Д. 1 В
+                    </p>
+                </div>
+
+                <!-- Правый блок: Дублирующий телефон -->
+                <div class="flex flex-col items-center lg:items-end gap-3 hidden md:flex">
+                    <a href="tel:+79883408001" class="flex items-center gap-3 text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                        <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        +7 988 340 8001
+                    </a>
+                </div>
+                
+                <!-- Мобильный дублирующий телефон (показывается только на мобильных внизу) -->
+                <div class="flex flex-col items-center gap-3 md:hidden mt-4 pt-6 border-t border-paper-dark w-full">
+                     <a href="tel:+79883408001" class="flex items-center gap-3 text-xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                        <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        +7 988 340 8001
+                    </a>
+                </div>
+
+            </div>
+        </footer>
+        
+    </main>
+
+</body>
+</html>
