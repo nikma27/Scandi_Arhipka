@@ -34,9 +34,9 @@
         }
     </script>
     <style>
-        /* Стилизация фона страницы (озеро и горы) */
+        /* Стилизация фона страницы */
         body {
-            background-image: url('https://images.unsplash.com/photo-1433838552652-f9a46b332c40?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('./assets/images/fon.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -57,6 +57,7 @@
             box-shadow: 2px 4px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
+            cursor: pointer; /* Показывает, что на фото можно нажать */
         }
         .photo-frame::after {
             content: '';
@@ -71,13 +72,6 @@
             box-shadow: 5px 10px 25px rgba(0,0,0,0.3);
             z-index: 10;
         }
-
-        /* Декоративные разделители */
-        .divider-line {
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(51, 47, 41, 0.3), transparent);
-            margin: 10px 0;
-        }
     </style>
 </head>
 <body class="flex items-center justify-center p-4 md:p-8 font-sans text-ink">
@@ -87,7 +81,6 @@
         
         <!-- Верхняя часть (Заголовок и логотипы) -->
         <header class="flex flex-col md:flex-row items-center justify-between mb-12 relative z-10 gap-8">
-            
             <!-- Левый рисунок (Колосок) -->
             <div class="hidden md:block w-32 opacity-80">
                 <svg viewBox="0 0 100 200" fill="none" stroke="currentColor" stroke-width="2" class="w-24 h-auto text-ink">
@@ -98,7 +91,6 @@
                     <path d="M49,160 C70,140 80,110 60,130" />
                     <path d="M48,130 C75,100 85,70 65,100" />
                     <path d="M46,100 C75,70 85,40 60,70" />
-                    <!-- Зерна -->
                     <circle cx="35" cy="110" r="3" fill="currentColor" />
                     <circle cx="28" cy="80" r="3" fill="currentColor" />
                     <circle cx="65" cy="120" r="3" fill="currentColor" />
@@ -123,59 +115,85 @@
             <!-- Правый рисунок (Солнце и горы) -->
             <div class="hidden md:block w-48 opacity-80">
                  <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-auto text-ink">
-                    <!-- Лучи -->
                     <line x1="100" y1="40" x2="100" y2="10" stroke-dasharray="2 4"/>
                     <line x1="80" y1="45" x2="60" y2="20" stroke-dasharray="2 4"/>
                     <line x1="120" y1="45" x2="140" y2="20" stroke-dasharray="2 4"/>
                     <line x1="65" y1="60" x2="30" y2="40" stroke-dasharray="2 4"/>
                     <line x1="135" y1="60" x2="170" y2="40" stroke-dasharray="2 4"/>
-                    <!-- Солнце -->
                     <path d="M60,80 A40,40 0 0,1 140,80" />
-                    <!-- Горы -->
                     <path d="M20,95 L60,65 L85,85 L120,55 L160,85 L190,95 Z" fill="rgba(0,0,0,0.05)" />
                     <path d="M40,95 L70,75 L95,95 Z" />
                     <path d="M100,95 L130,65 L160,95 Z" />
-                    <!-- Линия горизонта -->
                     <line x1="10" y1="95" x2="190" y2="95" stroke-width="3" />
                 </svg>
             </div>
         </header>
 
-        <!-- Галерея фотографий -->
-        <section class="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 md:gap-4 lg:gap-8 my-16 z-10 relative">
+        <!-- ГАЛЕРЕЯ (Здесь меняй названия файлов!) -->
+        <section class="flex flex-col md:flex-row flex-wrap items-center justify-center gap-6 md:gap-4 lg:gap-8 mt-16 mb-12 z-10 relative">
             
-            <!-- Фото 1 -->
             <div class="photo-frame -rotate-2 w-72 md:w-48 lg:w-56 xl:w-64">
-                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop" alt="Интерьер" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+                <img src="./assets/images/photo1.jpg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop'" alt="Интерьер" class="w-full h-40 md:h-32 lg:h-40 object-cover">
             </div>
             
-            <!-- Фото 2 -->
             <div class="photo-frame rotate-3 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
-                <img src="https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?q=80&w=800&auto=format&fit=crop" alt="Декор" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+                <img src="./assets/images/photo2.jpg" onerror="this.src='https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?q=80&w=800&auto=format&fit=crop'" alt="Декор" class="w-full h-40 md:h-32 lg:h-40 object-cover">
             </div>
             
-            <!-- Фото 3 (Центральная, Экстерьер) -->
+            <!-- Центральное фото (чуть крупнее) -->
             <div class="photo-frame -rotate-1 w-80 md:w-56 lg:w-64 xl:w-72 mt-4 md:mt-0 md:-translate-y-4">
-                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop" alt="Фасад гостевого дома" class="w-full h-48 md:h-40 lg:h-48 object-cover">
+                <img src="./assets/images/photo3.jpg" onerror="this.src='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop'" alt="Фасад гостевого дома" class="w-full h-48 md:h-40 lg:h-48 object-cover">
             </div>
             
-            <!-- Фото 4 -->
             <div class="photo-frame rotate-2 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
-                <img src="https://images.unsplash.com/photo-1416879598555-53dfad6094dd?q=80&w=800&auto=format&fit=crop" alt="Вид" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+                <img src="./assets/images/photo4.jpg" onerror="this.src='https://images.unsplash.com/photo-1416879598555-53dfad6094dd?q=80&w=800&auto=format&fit=crop'" alt="Вид" class="w-full h-40 md:h-32 lg:h-40 object-cover">
             </div>
             
-            <!-- Фото 5 -->
             <div class="photo-frame -rotate-3 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
-                <img src="https://images.unsplash.com/photo-1499933374294-4584d31509bf?q=80&w=800&auto=format&fit=crop" alt="Детали" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+                <img src="./assets/images/photo5.jpg" onerror="this.src='https://images.unsplash.com/photo-1499933374294-4584d31509bf?q=80&w=800&auto=format&fit=crop'" alt="Детали" class="w-full h-40 md:h-32 lg:h-40 object-cover">
             </div>
 
         </section>
 
+        <!-- БЛОК ОПИСАНИЯ -->
+        <section class="max-w-4xl mx-auto mb-16 z-10 relative bg-white/40 p-6 md:p-10 rounded-sm border border-paper-dark/30 shadow-[0_4px_30px_rgba(0,0,0,0.05)] backdrop-blur-sm">
+            <h3 class="font-serif text-2xl md:text-3xl text-center mb-6 text-ink">Об отдыхе у нас</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Левая колонка: Текст -->
+                <div class="text-ink-light leading-relaxed">
+                    <p class="mb-4">
+                        Добро пожаловать в "Сканди" — уютное место, где каждая деталь создана для вашего комфорта. Наш гостевой дом выполнен в светлом скандинавском стиле с элементами эко-декора.
+                    </p>
+                    <p>
+                        Мы находимся в тихом районе Архипо-Осиповки, вдали от шумных дорог, но в пешей доступности до теплого моря и главных развлечений поселка.
+                    </p>
+                </div>
+                <!-- Правая колонка: Удобства -->
+                <div class="flex flex-col gap-3 justify-center">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-wifi text-accent w-6 text-center"></i>
+                        <span>Бесплатный быстрый Wi-Fi</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-kitchen-set text-accent w-6 text-center"></i>
+                        <span>Летняя кухня для гостей</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-car text-accent w-6 text-center"></i>
+                        <span>Парковка на территории</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-mug-hot text-accent w-6 text-center"></i>
+                        <span>Уютные зоны отдыха</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Подвал (Контакты и Адрес) -->
-        <footer class="mt-16 pt-8 border-t-2 border-paper-dark border-dashed z-10 relative">
+        <footer class="pt-8 border-t-2 border-paper-dark border-dashed z-10 relative">
             <div class="flex flex-col lg:flex-row justify-between items-center gap-8 lg:gap-4">
                 
-                <!-- Левый блок: Телефон и скидка -->
                 <div class="flex flex-col items-center lg:items-start gap-3">
                     <a href="tel:+79883408001" class="flex items-center gap-3 text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
                         <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
@@ -188,7 +206,6 @@
                     </div>
                 </div>
 
-                <!-- Центральный блок: Адрес -->
                 <div class="flex flex-col items-center gap-3 text-center px-4 lg:border-l lg:border-r border-paper-dark lg:px-8">
                     <i class="fa-solid fa-location-dot text-2xl text-ink mb-1"></i>
                     <p class="text-sm md:text-base font-semibold tracking-wider leading-relaxed text-ink-light">
@@ -198,7 +215,6 @@
                     </p>
                 </div>
 
-                <!-- Правый блок: Дублирующий телефон -->
                 <div class="flex flex-col items-center lg:items-end gap-3 hidden md:flex">
                     <a href="tel:+79883408001" class="flex items-center gap-3 text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
                         <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
@@ -208,7 +224,6 @@
                     </a>
                 </div>
                 
-                <!-- Мобильный дублирующий телефон (показывается только на мобильных внизу) -->
                 <div class="flex flex-col items-center gap-3 md:hidden mt-4 pt-6 border-t border-paper-dark w-full">
                      <a href="tel:+79883408001" class="flex items-center gap-3 text-xl font-serif font-bold text-ink hover:text-amber-700 transition">
                         <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
@@ -223,5 +238,70 @@
         
     </main>
 
+    <!-- Скрытое модальное окно для полноэкранного просмотра фото -->
+    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/90 flex-col items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <!-- Кнопка закрытия -->
+        <button id="closeModal" class="absolute top-6 right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110">&times;</button>
+        <!-- Само фото -->
+        <img id="modalImage" src="" alt="Увеличенное фото" class="max-w-full max-h-[90vh] rounded shadow-2xl scale-95 transition-transform duration-300 border-4 border-white/10">
+    </div>
+
+    <!-- Скрипт для работы галереи -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeBtn = document.getElementById('closeModal');
+            // Находим все картинки внутри рамок
+            const galleryImages = document.querySelectorAll('.photo-frame img');
+
+            // Функция открытия
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    modalImg.src = img.src; // Берем путь кликнутой картинки
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    
+                    // Небольшая задержка, чтобы сработала плавная анимация (transition)
+                    setTimeout(() => {
+                        modal.classList.remove('opacity-0');
+                        modalImg.classList.remove('scale-95');
+                        modalImg.classList.add('scale-100');
+                    }, 10);
+                });
+            });
+
+            // Функция закрытия
+            const closeModal = () => {
+                modal.classList.add('opacity-0');
+                modalImg.classList.remove('scale-100');
+                modalImg.classList.add('scale-95');
+                
+                // Ждем пока пройдет анимация затухания, потом прячем блок
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                    modalImg.src = ''; // очищаем источник
+                }, 300);
+            };
+
+            // Закрытие по крестику
+            closeBtn.addEventListener('click', closeModal);
+            
+            // Закрытие по клику мимо картинки (на темный фон)
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Закрытие клавишей Esc на клавиатуре
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
