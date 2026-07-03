@@ -77,8 +77,8 @@
         /* Gallery grid and card layout */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
             align-items: stretch;
             grid-auto-rows: 1fr; /* ensure equal-height rows */
         }
@@ -115,13 +115,13 @@
         #infoModal .placeholder { min-height: 200px; border: 2px dashed rgba(71,66,56,0.12); border-radius: 6px; margin-top: 1rem; }
     </style>
 </head>
-<body class="flex items-center justify-center p-4 md:p-8 font-sans text-ink">
+    <body class="flex items-center justify-center p-2 sm:p-4 md:p-8 font-sans text-ink">
 
     <!-- Главный контейнер (Бумага) -->
-    <main class="paper-texture w-full max-w-7xl rounded-sm p-6 md:p-10 lg:p-16 relative overflow-hidden">
+    <main class="paper-texture w-full max-w-7xl rounded-sm p-4 sm:p-6 md:p-10 lg:p-16 relative overflow-hidden">
         
         <!-- Верхняя часть (Заголовок и логотипы) -->
-        <header class="flex flex-col md:flex-row items-center justify-between mb-12 relative z-10 gap-8">
+        <header class="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12 relative z-10 gap-4 md:gap-8">
             <!-- Левый рисунок (Колосок) -->
             <div class="hidden md:block w-32 opacity-80">
                 <svg viewBox="0 0 100 200" fill="none" stroke="currentColor" stroke-width="2" class="w-24 h-auto text-ink">
@@ -140,17 +140,17 @@
             </div>
 
             <!-- Центральный текст -->
-            <div class="text-center flex-1">
-                <h2 class="text-sm md:text-base tracking-[0.3em] uppercase font-semibold text-ink-light mb-2">Гостевой дом</h2>
-                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-ink tracking-wide mb-2">СКАНДИ</h1>
+            <div class="text-center flex-1 w-full">
+                <h2 class="text-xs sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.3em] uppercase font-semibold text-ink-light mb-1 sm:mb-2">Гостевой дом</h2>
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-ink tracking-wide mb-1 sm:mb-2">СКАНДИ</h1>
                 
-                <div class="flex items-center justify-center gap-4 my-3 opacity-60">
-                    <div class="h-[1px] w-16 bg-ink"></div>
-                    <i class="fa-solid fa-leaf text-sm"></i>
-                    <div class="h-[1px] w-16 bg-ink"></div>
+                <div class="flex items-center justify-center gap-2 sm:gap-4 my-2 sm:my-3 opacity-60">
+                    <div class="h-[1px] w-10 sm:w-16 bg-ink"></div>
+                    <i class="fa-solid fa-leaf text-xs sm:text-sm"></i>
+                    <div class="h-[1px] w-10 sm:w-16 bg-ink"></div>
                 </div>
 
-                <p class="font-handwriting text-3xl md:text-4xl lg:text-5xl text-ink mt-2">Там, где солнце</p>
+                <p class="font-handwriting text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-ink mt-1 sm:mt-2">Там, где солнце</p>
             </div>
 
             <!-- Правый рисунок (Солнце и горы) -->
@@ -322,11 +322,11 @@
     </div>
 
     <!-- Информационное модальное окно для карточек -->
-    <div id="infoModal" class="fixed inset-0 z-50 hidden bg-black/80 p-6 opacity-0 transition-opacity duration-300">
-        <button id="infoClose" class="absolute top-6 right-6 text-white text-4xl hover:text-gray-300 focus:outline-none">&times;</button>
-        <div class="flex items-center justify-center h-full p-6">
-            <div class="bg-white rounded-md max-w-4xl w-full p-6 shadow-lg overflow-auto">
-                <h3 id="infoTitle" class="font-serif text-2xl text-ink mb-4"></h3>
+    <div id="infoModal" class="fixed inset-0 z-50 hidden bg-black/80 p-2 sm:p-6 opacity-0 transition-opacity duration-300">
+        <button id="infoClose" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white text-3xl sm:text-4xl hover:text-gray-300 focus:outline-none">&times;</button>
+        <div class="flex items-center justify-center h-full p-2 sm:p-6">
+            <div class="bg-white rounded-md max-w-4xl w-full p-4 sm:p-6 shadow-lg overflow-auto max-h-[90vh]">
+                <h3 id="infoTitle" class="font-serif text-xl sm:text-2xl text-ink mb-3 sm:mb-4"></h3>
                 <div id="infoContent" class="text-ink-light"></div>
             </div>
         </div>
