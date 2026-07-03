@@ -179,12 +179,12 @@
         <!-- ГАЛЕРЕЯ (Здесь меняй названия файлов!) -->
         <section class="gallery-grid mt-16 mb-12 z-10 relative">
 
-                <article class="card card-link text-center cursor-pointer group" data-card="card1" aria-label="Номера для четырех +1 гостей">
+                <article class="card card-link text-center cursor-pointer group" data-card="card1" aria-label="Номер для четверых +1 гостей">
                     <div class="img-wrap photo-frame -rotate-2 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
                         <img src="./assets/images/P1370468.jpg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop'" alt="Интерьер" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
                     <div class="card-body mt-4">
-                        <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink">Номера для четырех +1 гостей</p>
+                        <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink">Номер для четверых +1 гостей</p>
                     </div>
                 </article>
 
@@ -494,6 +494,14 @@
                         const div = document.createElement('div');
                         div.className = 'photo-frame w-full aspect-[4/3] cursor-pointer overflow-hidden';
                         div.innerHTML = `<img src="${src}" class="w-full h-full object-cover" alt="Фото номера">`;
+                        // Add click to open lightbox
+                        div.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            lightboxImg.src = src;
+                            imageModal.classList.remove('hidden');
+                            imageModal.classList.add('flex');
+                            setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
+                        });
                         photoGrid.appendChild(div);
                     });
                 }
