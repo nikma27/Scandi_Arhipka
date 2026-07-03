@@ -352,16 +352,16 @@
             imageClose.type = 'button';
             infoClose.type = 'button';
 
-            // Open lightbox when clicking on the image inside a card
+            // Open info modal when clicking on the image inside a card
             galleryImages.forEach(img => {
                 img.addEventListener('click', (e) => {
                     e.stopPropagation();
                     e.preventDefault();
-                    const src = img.getAttribute('src') || '';
-                    lightboxImg.src = src;
-                    imageModal.classList.remove('hidden');
-                    imageModal.classList.add('flex');
-                    setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
+                    const card = img.closest('.card');
+                    if (card) {
+                        const key = card.dataset.card;
+                        openInfoModal(key);
+                    }
                 });
             });
 
