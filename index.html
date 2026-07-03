@@ -357,6 +357,7 @@
             const infoClose = document.getElementById('infoClose');
             const infoTitle = document.getElementById('infoTitle');
             const infoContent = document.getElementById('infoContent');
+            const photoGrid = document.getElementById('photoGrid');
 
             imageClose.type = 'button';
             infoClose.type = 'button';
@@ -374,6 +375,18 @@
                 });
             });
 
+            // Lightbox for photos inside info modal
+            photoGrid.addEventListener('click', (e) => {
+                const frame = e.target.closest('.photo-frame');
+                if (frame && frame.querySelector('img')) {
+                    const img = frame.querySelector('img');
+                    lightboxImg.src = img.src;
+                    imageModal.classList.remove('hidden');
+                    imageModal.classList.add('flex');
+                    setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
+                }
+            });
+
             const closeImageModal = (event) => {
                 if (event) event.stopPropagation();
                 imageModal.classList.add('opacity-0');
@@ -389,74 +402,23 @@
             const CARD_DATA = {
                 card1: {
                     title: 'Четырехместные номера',
-                    html: `
-                        <p class="mb-3">Просторные номера с двумя двуспальными кроватями, местом для семьи и мягким светом.</p>
-                        <ul class="list-disc ml-5 mb-3">
-                            <li>Постельное и полотенца</li>
-                            <li>Кондиционер и Wi‑Fi</li>
-                            <li>Общая кухня и парковка</li>
-                        </ul>
-                        <div class="grid grid-cols-2 gap-2">
-                            <img src="./assets/images/P1370468.jpg" class="w-full h-28 object-cover rounded" alt="4-местный">
-                            <img src="./assets/images/photo3.jpg" class="w-full h-28 object-cover rounded" alt="фасад">
-                        </div>
-                    `
+                    html: `<p class="mb-3">Просторные номера с двумя двуспальными кроватями, местом для семьи и мягким светом.</p>`
                 },
                 card2: {
                     title: 'Трехместные номера',
-                    html: `
-                        <p class="mb-3">Удобные номера на троих с дополнительным спальным местом и уютным интерьером.</p>
-                        <ul class="list-disc ml-5 mb-3">
-                            <li>Удобные кровати и хранение вещей</li>
-                            <li>Быстрый Wi‑Fi</li>
-                            <li>Доступ к летней кухне</li>
-                        </ul>
-                        <div class="grid grid-cols-2 gap-2">
-                            <img src="./assets/images/P1370569.jpg" class="w-full h-28 object-cover rounded" alt="3-местный">
-                            <img src="./assets/images/photo5.jpg" class="w-full h-28 object-cover rounded" alt="детали">
-                        </div>
-                    `
+                    html: `<p class="mb-3">Удобные номера на троих с дополнительным спальным местом и уютным интерьером.</p>`
                 },
                 card3: {
                     title: 'Двухместные номера',
-                    html: `
-                        <p class="mb-3">Комфортные номера для пары с деликатным скандинавским стилем.</p>
-                        <ul class="list-disc ml-5 mb-3">
-                            <li>Уютные кровати</li>
-                            <li>Чайный набор и мини-холодильник</li>
-                            <li>Близость к пляжу</li>
-                        </ul>
-                        <div class="grid grid-cols-2 gap-2">
-                            <img src="./assets/images/photo3.jpg" class="w-full h-28 object-cover rounded" alt="двухместный">
-                            <img src="./assets/images/P1370468.jpg" class="w-full h-28 object-cover rounded" alt="интерьер">
-                        </div>
-                    `
+                    html: `<p class="mb-3">Комфортные номера для пары с деликатным скандинавским стилем.</p>`
                 },
                 card4: {
                     title: 'Все удобства нашего гостевого дома',
-                    html: `
-                        <p class="mb-3">Перечень основных удобств, доступных всем гостям.</p>
-                        <ul class="list-disc ml-5 mb-3">
-                            <li>Бесплатный Wi‑Fi</li>
-                            <li>Летняя кухня и общая зона</li>
-                            <li>Стоянка, сад и мангал</li>
-                        </ul>
-                        <div class="grid grid-cols-2 gap-2">
-                            <img src="./assets/images/photo4.jpg" class="w-full h-28 object-cover rounded" alt="удобства">
-                            <img src="./assets/images/photo5.jpg" class="w-full h-28 object-cover rounded" alt="детали">
-                        </div>
-                    `
+                    html: `<p class="mb-3">Перечень основных удобств, доступных всем гостям.</p>`
                 },
                 card5: {
                     title: 'Правила размещения',
-                    html: `
-                        <p class="mb-3">Короткий свод правил, соблюдение которых обеспечивает комфорт всем гостям.</p>
-                        <ul class="list-disc ml-5 mb-3">
-                            <li>Регистрация при заезде</li>
-                            <li>Тишина после 23:00</li>
-                            <li>Курение только на улице</li>
-                        </ul>
-                    `
+                    html: `<p class="mb-3">Короткий свод правил, соблюдение которых обеспечивает комфорт всем гостям.</p>`
                 }
             };
 
@@ -464,8 +426,7 @@
                 const data = CARD_DATA[cardKey];
                 if (!data) return;
                 infoTitle.textContent = data.title;
-                // insert content and add a placeholder area for future photos
-                infoContent.innerHTML = data.html + '\n<div class="placeholder" aria-hidden="true"></div>';
+                infoContent.innerHTML = data.html;
                 infoModal.classList.remove('hidden');
                 infoModal.classList.add('flex');
                 setTimeout(() => infoModal.classList.remove('opacity-0'), 10);
