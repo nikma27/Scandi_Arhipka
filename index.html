@@ -392,7 +392,15 @@
             const CARD_DATA = {
                 card1: {
                     title: 'Четырехместные номера',
-                    html: `<p class="mb-3">Просторные номера с двумя двуспальными кроватями, местом для семьи и мягким светом.</p>`
+                    html: `<p class="mb-3">Просторные номера с двумя двуспальными кроватями, местом для семьи и мягким светом.</p>`,
+                    photos: [
+                        './assets/images/P1370476.jpg',
+                        './assets/images/P1370477.jpg',
+                        './assets/images/P1370484.jpg',
+                        './assets/images/P1370578.jpg',
+                        './assets/images/P1370582.jpg',
+                        './assets/images/P1370589.jpg'
+                    ]
                 },
                 card2: {
                     title: 'Трехместные номера',
@@ -417,6 +425,23 @@
                 if (!data) return;
                 infoTitle.textContent = data.title;
                 infoContent.innerHTML = data.html;
+                
+                // Clear and fill photo grid
+                photoGrid.innerHTML = '';
+                if (data.photos) {
+                    data.photos.forEach(src => {
+                        const div = document.createElement('div');
+                        div.className = 'photo-frame w-full h-32 sm:h-40 cursor-pointer overflow-hidden';
+                        div.innerHTML = `<img src="${src}" class="w-full h-full object-cover" alt="Фото номера">`;
+                        photoGrid.appendChild(div);
+                    });
+                } else {
+                    // Add empty frames if no photos
+                    for(let i=0; i<6; i++) {
+                        photoGrid.innerHTML += '<div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>';
+                    }
+                }
+
                 infoModal.classList.remove('hidden');
                 infoModal.classList.add('flex');
                 setTimeout(() => infoModal.classList.remove('opacity-0'), 10);
