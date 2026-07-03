@@ -173,30 +173,30 @@
         <!-- ГАЛЕРЕЯ (Здесь меняй названия файлов!) -->
         <section class="gallery-grid mt-16 mb-12 z-10 relative">
 
-                <article class="card card-link text-center cursor-pointer group" data-card="card1" aria-label="Четырехместные номера">
+                <article class="card card-link text-center cursor-pointer group" data-card="card1" aria-label="Номера для четырех +1 гостей">
                     <div class="img-wrap photo-frame -rotate-2 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
                         <img src="./assets/images/P1370468.jpg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop'" alt="Интерьер" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
                     <div class="card-body mt-4">
-                        <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink">Четырехместные номера</p>
+                        <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink">Номера для четырех +1 гостей</p>
                     </div>
                 </article>
 
-                <article class="card card-link text-center cursor-pointer group" data-card="card2" aria-label="Трехместные номера">
+                <article class="card card-link text-center cursor-pointer group" data-card="card2" aria-label="Номера для троих гостей">
                     <div class="img-wrap photo-frame rotate-3 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
                         <img src="./assets/images/P1370569.jpg" onerror="this.src='https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?q=80&w=800&auto=format&fit=crop'" alt="Декор" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
                     <div class="card-body mt-4">
-                        <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink">Трехместные номера</p>
+                        <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink">Номера для троих гостей</p>
                     </div>
                 </article>
 
-                <article class="card card-link text-center cursor-pointer group" data-card="card3" aria-label="Двухместные номера">
+                <article class="card card-link text-center cursor-pointer group" data-card="card3" aria-label="Номера для двоих гостей">
                     <div class="img-wrap photo-frame -rotate-1 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
                         <img src="./assets/images/P1370518.jpg" onerror="this.src='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop'" alt="Фасад гостевого дома" class="w-full h-48 md:h-56 lg:h-64 object-cover">
                     </div>
                     <div class="card-body mt-4">
-                        <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink">Двухместные номера</p>
+                        <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink">Номера для двоих гостей</p>
                     </div>
                 </article>
 
@@ -391,8 +391,18 @@
 
             const CARD_DATA = {
                 card1: {
-                    title: 'Четырехместные номера',
-                    html: `<p class="mb-3">Просторные номера с двумя двуспальными кроватями, местом для семьи и мягким светом.</p>`,
+                    title: 'Номера для четырех +1 гостей',
+                    html: `
+                        <h4 class="font-serif text-xl mb-2">Уютный семейный номер</h4>
+                        <p class="mb-3">Светлое и элегантное пространство, созданное для комфортного отдыха семьи или компании до пяти человек. Мы бережно продумали каждую деталь, чтобы вы могли насладиться атмосферой спокойствия и уюта.</p>
+                        <h5 class="font-semibold mb-2">К вашим услугам:</h5>
+                        <ul class="list-disc ml-5 mb-3">
+                            <li>Двуспальная кровать, двухъярусная кровать и дополнительное спальное место.</li>
+                            <li>Мини-кухня с холодильником и уютной обеденной зоной.</li>
+                            <li>Современный кондиционер для идеального микроклимата и Smart-TV.</li>
+                            <li>Индивидуальная ванная комната с душевой кабиной.</li>
+                        </ul>
+                    `,
                     photos: [
                         './assets/images/P1370476.jpg',
                         './assets/images/P1370477.jpg',
