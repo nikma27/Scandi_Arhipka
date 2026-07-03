@@ -311,25 +311,25 @@
         </div>
     </div>
 
-    <!-- Информационное модальное окно для карточек -->
+                <!-- Информационное модальное окно для карточек -->
     <div id="infoModal" class="fixed inset-0 z-50 hidden bg-black/80 p-2 sm:p-6 opacity-0 transition-opacity duration-300">
         <div class="flex items-center justify-center h-full p-2 sm:p-6">
-            <div class="bg-white rounded-md max-w-4xl w-full p-4 sm:p-6 shadow-lg overflow-auto max-h-[90vh] relative">
+            <div class="bg-white/40 backdrop-blur-sm border border-paper-dark/30 rounded-sm max-w-4xl w-full p-6 md:p-10 shadow-[0_4px_30px_rgba(0,0,0,0.05)] overflow-auto max-h-[90vh] relative">
                 <!-- Крестик закрытия -->
                 <button id="infoClose" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-ink text-3xl hover:text-gray-600 focus:outline-none z-10">&times;</button>
                 
-                <h3 id="infoTitle" class="font-serif text-xl sm:text-2xl text-ink mb-3 sm:mb-4 pr-8"></h3>
-                <div id="infoContent" class="text-ink-light"></div>
+                <h3 id="infoTitle" class="font-serif text-2xl md:text-3xl text-center mb-6 text-ink"></h3>
+                <div id="infoContent" class="text-ink-light leading-relaxed"></div>
                 
                 <!-- Контейнер для 6 фото-рамок -->
                 <div id="photoGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
                     <!-- 6 рамок -->
-                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
-                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
-                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
-                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
-                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
-                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
+                    <div class="photo-frame w-full aspect-[4/3] cursor-pointer"></div>
+                    <div class="photo-frame w-full aspect-[4/3] cursor-pointer"></div>
+                    <div class="photo-frame w-full aspect-[4/3] cursor-pointer"></div>
+                    <div class="photo-frame w-full aspect-[4/3] cursor-pointer"></div>
+                    <div class="photo-frame w-full aspect-[4/3] cursor-pointer"></div>
+                    <div class="photo-frame w-full aspect-[4/3] cursor-pointer"></div>
                 </div>
             </div>
         </div>
