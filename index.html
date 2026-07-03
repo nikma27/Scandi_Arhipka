@@ -263,6 +263,8 @@
             const closeBtn = document.getElementById('closeModal');
             const galleryImages = document.querySelectorAll('.photo-frame img');
 
+            closeBtn.type = 'button';
+
             // Функция открытия
             galleryImages.forEach(img => {
                 img.addEventListener('click', () => {
@@ -276,7 +278,10 @@
             });
 
             // Функция закрытия
-            const closeModal = () => {
+            const closeModal = (event) => {
+                if (event) {
+                    event.stopPropagation();
+                }
                 modal.classList.add('opacity-0');
                 setTimeout(() => {
                     modal.classList.add('hidden');
