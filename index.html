@@ -465,12 +465,19 @@
                 card4: {
                     title: 'Все удобства нашего гостевого дома',
                     html: `<p class="mb-3">Перечень основных удобств, доступных всем гостям.</p>`,
-                    photos: Array(6).fill('https://placehold.co/600x400/eaddc6/332f29?text=Фото')
+                    photos: [
+                        './assets/images/Gemini_Generated_Image_9cj59z9cj59z9cj5.png',
+                        './assets/images/P1370451.jpg',
+                        './assets/images/photo_2026-05-24_20-58-38.jpg',
+                        './assets/images/photo_2026-05-24_20-58-57.jpg',
+                        './assets/images/photo_2026-06-01_00-57-13.jpg',
+                        './assets/images/photo_2026-06-01_01-14-31.jpg'
+                    ]
                 },
                 card5: {
                     title: 'Правила размещения',
                     html: `<p class="mb-3">Короткий свод правил, соблюдение которых обеспечивает комфорт всем гостям.</p>`,
-                    photos: Array(6).fill('https://placehold.co/600x400/eaddc6/332f29?text=Фото')
+                    photos: []
                 }
             };
 
@@ -482,7 +489,7 @@
                 
                 // Clear and fill photo grid
                 photoGrid.innerHTML = '';
-                if (data.photos) {
+                if (data.photos && data.photos.length > 0) {
                     data.photos.forEach(src => {
                         const div = document.createElement('div');
                         div.className = 'photo-frame w-full aspect-[4/3] cursor-pointer overflow-hidden';
