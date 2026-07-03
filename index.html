@@ -323,11 +323,24 @@
 
     <!-- Информационное модальное окно для карточек -->
     <div id="infoModal" class="fixed inset-0 z-50 hidden bg-black/80 p-2 sm:p-6 opacity-0 transition-opacity duration-300">
-        <button id="infoClose" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white text-3xl sm:text-4xl hover:text-gray-300 focus:outline-none">&times;</button>
         <div class="flex items-center justify-center h-full p-2 sm:p-6">
-            <div class="bg-white rounded-md max-w-4xl w-full p-4 sm:p-6 shadow-lg overflow-auto max-h-[90vh]">
-                <h3 id="infoTitle" class="font-serif text-xl sm:text-2xl text-ink mb-3 sm:mb-4"></h3>
+            <div class="bg-white rounded-md max-w-4xl w-full p-4 sm:p-6 shadow-lg overflow-auto max-h-[90vh] relative">
+                <!-- Крестик закрытия -->
+                <button id="infoClose" class="absolute top-2 right-2 sm:top-4 sm:right-4 text-ink text-3xl hover:text-gray-600 focus:outline-none z-10">&times;</button>
+                
+                <h3 id="infoTitle" class="font-serif text-xl sm:text-2xl text-ink mb-3 sm:mb-4 pr-8"></h3>
                 <div id="infoContent" class="text-ink-light"></div>
+                
+                <!-- Контейнер для 6 фото-рамок -->
+                <div id="photoGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-6">
+                    <!-- 6 рамок -->
+                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
+                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
+                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
+                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
+                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
+                    <div class="photo-frame w-full h-32 sm:h-40 cursor-pointer"></div>
+                </div>
             </div>
         </div>
     </div>
