@@ -74,6 +74,45 @@
         }
         .card-link { text-decoration: none; color: inherit; display: inline-block; }
         .card-link:focus { outline: 3px solid rgba(71,66,56,0.12); outline-offset: 6px; }
+        /* Gallery grid and card layout */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+            align-items: stretch;
+            grid-auto-rows: 1fr; /* ensure equal-height rows */
+        }
+        .card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background: transparent;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card .img-wrap {
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.35s ease-in-out;
+            will-change: transform;
+        }
+        .card:hover img {
+            transform: scale(1.05);
+        }
+        .card .card-body {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem 0;
+            gap: 0.5rem;
+        }
+        .card .card-text { flex-grow: 1; }
+        /* Info modal typography and placeholder */
+        #infoModal .info-desc { font-size: clamp(0.95rem, 1.6vw, 1.05rem); color: #4a453d; }
+        #infoModal .placeholder { min-height: 200px; border: 2px dashed rgba(71,66,56,0.12); border-radius: 6px; margin-top: 1rem; }
     </style>
 </head>
 <body class="flex items-center justify-center p-4 md:p-8 font-sans text-ink">
@@ -132,47 +171,62 @@
         </header>
 
         <!-- ГАЛЕРЕЯ (Здесь меняй названия файлов!) -->
-        <section class="flex flex-col items-center gap-6 mt-16 mb-12 z-10 relative">
-            <div class="flex flex-row flex-wrap items-start justify-center gap-6 md:gap-4 lg:gap-8 w-full">
+        <section class="gallery-grid mt-16 mb-12 z-10 relative">
 
-                <a href="#" class="card-link photo-card block text-center" data-card="card1" aria-label="Четырехместные номера">
-                    <div class="photo-frame -rotate-2 w-72 md:w-48 lg:w-56 xl:w-64">
-                        <img src="./assets/images/P1370468.jpg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop'" alt="Интерьер" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+                <a href="#" class="card card-link text-center" data-card="card1" aria-label="Четырехместные номера">
+                    <div class="img-wrap photo-frame -rotate-2 w-full">
+                        <img src="./assets/images/P1370468.jpg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop'" alt="Интерьер" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
-                    <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Четырехместные номера</p>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Четырехместные номера</p>
+                        </div>
+                    </div>
                 </a>
 
-                <a href="#" class="card-link photo-card block text-center" data-card="card2" aria-label="Трехместные номера">
-                    <div class="photo-frame rotate-3 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
-                        <img src="./assets/images/P1370569.jpg" onerror="this.src='https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?q=80&w=800&auto=format&fit=crop'" alt="Декор" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+                <a href="#" class="card card-link text-center" data-card="card2" aria-label="Трехместные номера">
+                    <div class="img-wrap photo-frame rotate-3 w-full">
+                        <img src="./assets/images/P1370569.jpg" onerror="this.src='https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?q=80&w=800&auto=format&fit=crop'" alt="Декор" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
-                    <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Трехместные номера</p>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Трехместные номера</p>
+                        </div>
+                    </div>
                 </a>
 
-                <a href="#" class="card-link photo-card block text-center" data-card="card3" aria-label="Двухместные номера">
-                    <div class="photo-frame -rotate-1 w-80 md:w-56 lg:w-64 xl:w-72 mt-4 md:mt-0 md:-translate-y-4">
-                        <img src="./assets/images/photo3.jpg" onerror="this.src='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop'" alt="Фасад гостевого дома" class="w-full h-48 md:h-40 lg:h-48 object-cover">
+                <a href="#" class="card card-link text-center" data-card="card3" aria-label="Двухместные номера">
+                    <div class="img-wrap photo-frame -rotate-1 w-full">
+                        <img src="./assets/images/photo3.jpg" onerror="this.src='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop'" alt="Фасад гостевого дома" class="w-full h-48 md:h-56 lg:h-64 object-cover">
                     </div>
-                    <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Двухместные номера</p>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Двухместные номера</p>
+                        </div>
+                    </div>
                 </a>
 
-                <a href="#" class="card-link photo-card block text-center" data-card="card4" aria-label="Все удобства нашего гостевого дома">
-                    <div class="photo-frame rotate-2 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
-                        <img src="./assets/images/photo4.jpg" onerror="this.src='https://images.unsplash.com/photo-1416879598555-53dfad6094dd?q=80&w=800&auto=format&fit=crop'" alt="Вид" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+                <a href="#" class="card card-link text-center" data-card="card4" aria-label="Все удобства нашего гостевого дома">
+                    <div class="img-wrap photo-frame rotate-2 w-full">
+                        <img src="./assets/images/photo4.jpg" onerror="this.src='https://images.unsplash.com/photo-1416879598555-53dfad6094dd?q=80&w=800&auto=format&fit=crop'" alt="Вид" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
-                    <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Все удобства нашего гостевого дома</p>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Все удобства нашего гостевого дома</p>
+                        </div>
+                    </div>
                 </a>
 
-            </div>
-
-            <div class="w-full flex justify-center mt-6">
-                <a href="#" class="card-link photo-card block text-center" data-card="card5" aria-label="Правила размещения">
-                    <div class="photo-frame -rotate-3 w-72 md:w-48 lg:w-56 xl:w-64 mt-4 md:mt-0">
-                        <img src="./assets/images/photo5.jpg" onerror="this.src='https://images.unsplash.com/photo-1499933374294-4584d31509bf?q=80&w=800&auto=format&fit=crop'" alt="Детали" class="w-full h-40 md:h-32 lg:h-40 object-cover">
+                <a href="#" class="card card-link text-center" data-card="card5" aria-label="Правила размещения">
+                    <div class="img-wrap photo-frame -rotate-3 w-full">
+                        <img src="./assets/images/photo5.jpg" onerror="this.src='https://images.unsplash.com/photo-1499933374294-4584d31509bf?q=80&w=800&auto=format&fit=crop'" alt="Детали" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
-                    <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Правила размещения</p>
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p class="font-handwriting text-2xl md:text-3xl lg:text-4xl text-ink mt-2">Правила размещения</p>
+                        </div>
+                    </div>
                 </a>
-            </div>
 
         </section>
 
@@ -261,33 +315,9 @@
 
     <!-- Скрытое модальное окно для полноэкранного просмотра фото -->
     <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/90 p-4 opacity-0 transition-opacity duration-300">
-        <!-- Кнопка закрытия -->
         <button id="closeModal" class="absolute top-6 right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110">&times;</button>
-        <!-- Ряд из семи рамок -->
         <div class="absolute inset-0 flex items-center justify-center p-6">
-            <div id="modalGrid" class="flex w-full max-w-6xl flex-row flex-wrap justify-center gap-4 overflow-x-auto">
-                <div class="basis-[120px] min-w-[120px] h-[180px] overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-200 hover:-translate-y-2 hover:scale-105">
-                    <img src="./assets/images/№1%202этаж-четырехместный.jpg" alt="2 этаж четырехместный" class="w-full h-full object-cover">
-                </div>
-                <div class="basis-[120px] min-w-[120px] h-[180px] overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-200 hover:-translate-y-2 hover:scale-105">
-                    <img src="./assets/images/№2%201%20этаж-четырехместный%2B1.jpg" alt="1 этаж четырехместный+1" class="w-full h-full object-cover">
-                </div>
-                <div class="basis-[120px] min-w-[120px] h-[180px] overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-200 hover:-translate-y-2 hover:scale-105">
-                    <img src="./assets/images/№3%201%20этаж-трехместный.jpg" alt="1 этаж трехместный" class="w-full h-full object-cover">
-                </div>
-                <div class="basis-[120px] min-w-[120px] h-[180px] overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-200 hover:-translate-y-2 hover:scale-105">
-                    <img src="./assets/images/№4%202этаж-двухмемстный.jpg" alt="2 этаж двухместный" class="w-full h-full object-cover">
-                </div>
-                <div class="basis-[120px] min-w-[120px] h-[180px] overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-200 hover:-translate-y-2 hover:scale-105">
-                    <img src="./assets/images/№5%202%20этаж-%20трехместный.jpg" alt="2 этаж трехместный" class="w-full h-full object-cover">
-                </div>
-                <div class="basis-[120px] min-w-[120px] h-[180px] overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-200 hover:-translate-y-2 hover:scale-105">
-                    <img src="./assets/images/№6%202этаж-двухместный.jpg" alt="2 этаж двухместный" class="w-full h-full object-cover">
-                </div>
-                <div class="basis-[120px] min-w-[120px] h-[180px] overflow-hidden rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-200 hover:-translate-y-2 hover:scale-105">
-                    <img src="./assets/images/№7%202этаж-двушка%20с%20доп.%20местом.jpg" alt="2 этаж двушка с дополнительным местом" class="w-full h-full object-cover">
-                </div>
-            </div>
+            <img id="lightboxImg" src="" alt="" class="max-w-full max-h-full object-contain rounded shadow-lg" />
         </div>
     </div>
 
@@ -307,7 +337,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const imageModal = document.getElementById('imageModal');
             const imageClose = document.getElementById('closeModal');
-            const galleryImages = document.querySelectorAll('.photo-frame img');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const galleryImages = document.querySelectorAll('.card img');
 
             const infoModal = document.getElementById('infoModal');
             const infoClose = document.getElementById('infoClose');
@@ -317,10 +348,13 @@
             imageClose.type = 'button';
             infoClose.type = 'button';
 
-            // Open fullscreen image modal only for images NOT inside card links
+            // Open lightbox when clicking on the image inside a card
             galleryImages.forEach(img => {
                 img.addEventListener('click', (e) => {
-                    if (img.closest('a.card-link')) return; // card clicks handled separately
+                    e.stopPropagation();
+                    e.preventDefault();
+                    const src = img.getAttribute('src') || '';
+                    lightboxImg.src = src;
                     imageModal.classList.remove('hidden');
                     imageModal.classList.add('flex');
                     setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
@@ -417,7 +451,8 @@
                 const data = CARD_DATA[cardKey];
                 if (!data) return;
                 infoTitle.textContent = data.title;
-                infoContent.innerHTML = data.html;
+                // insert content and add a placeholder area for future photos
+                infoContent.innerHTML = data.html + '\n<div class="placeholder" aria-hidden="true"></div>';
                 infoModal.classList.remove('hidden');
                 infoModal.classList.add('flex');
                 setTimeout(() => infoModal.classList.remove('opacity-0'), 10);
