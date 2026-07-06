@@ -81,13 +81,7 @@
             mask-repeat: no-repeat;
         }
         /* Gallery grid and card layout */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1rem;
-            align-items: stretch;
-            grid-auto-rows: 1fr; /* ensure equal-height rows */
-        }
+
         .card {
             display: flex;
             flex-direction: column;
@@ -188,7 +182,7 @@
         </header>
 
         <!-- ГАЛЕРЕЯ (Здесь меняй названия файлов!) -->
-        <section class="gallery-grid mt-16 mb-12 z-10 relative">
+        <section class="gallery-grid mt-16 mb-12 z-10 relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
 
                 <article class="card card-link text-center cursor-pointer group" data-card="card1" aria-label="Номер для четверых +1 гостей">
                     <div class="img-wrap photo-frame -rotate-2 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
@@ -226,7 +220,7 @@
                     </div>
                 </article>
 
-                <article class="card card-link text-center cursor-pointer group" data-card="card5" aria-label="Правила размещения">
+                <article class="card card-link text-center cursor-pointer group md:col-span-2 md:justify-self-center" data-card="card5" aria-label="Правила размещения">
                     <div class="img-wrap photo-frame -rotate-3 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
                         <img src="./assets/images/P1370489.jpg" onerror="this.src='https://images.unsplash.com/photo-1499933374294-4584d31509bf?q=80&w=800&auto=format&fit=crop'" alt="Детали" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
