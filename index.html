@@ -98,11 +98,13 @@
         .card .img-wrap {
             overflow: hidden;
             border-radius: 2px;
+            aspect-ratio: 4/3; /* Добавляем aspect-ratio */
         }
         .card img {
             display: block;
             width: 100%;
-            height: auto;
+            height: 100%; /* Изменяем на 100% для заполнения контейнера */
+            object-fit: cover; /* Добавляем object-fit */
             transition: transform 0.35s ease-in-out;
             will-change: transform;
         }
@@ -114,8 +116,17 @@
             flex-direction: column;
             padding: 0.5rem 0;
             gap: 0.5rem;
+            flex-grow: 1; /* Добавляем flex-grow для выталкивания контента */
+            justify-content: space-between; /* Распределяем пространство между элементами */
         }
-        .card .card-text { flex-grow: 1; }
+        .card .card-body p { /* Заголовок карточки */
+            min-height: 3.5em; /* Примерное значение, может потребоваться корректировка */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Ограничиваем до 2 строк */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
         /* Info modal typography and placeholder */
         #infoModal .info-desc { font-size: clamp(0.95rem, 1.6vw, 1.05rem); color: #4a453d; }
         #infoModal .placeholder { min-height: 200px; border: 2px dashed rgba(71,66,56,0.12); border-radius: 6px; margin-top: 1rem; }
