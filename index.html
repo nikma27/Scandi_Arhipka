@@ -319,8 +319,8 @@
         <div class="absolute inset-0 flex items-center justify-center p-6">
             <img id="lightboxImg" src="" alt="" class="max-w-full max-h-full object-contain rounded shadow-lg" />
             <!-- Кнопки навигации -->
-            <button id="prevImage" class="absolute left-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110 hidden">&lt;</button>
-            <button id="nextImage" class="absolute right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110 hidden">&gt;</button>
+            <button id="prevImage" class="absolute left-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110">&lt;</button>
+            <button id="nextImage" class="absolute right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110">&gt;</button>
         </div>
     </div>
 
@@ -400,6 +400,27 @@
                         updateLightboxNavigation();
                     }
                 }
+            });
+
+            const updateLightboxNavigation = () => {
+                prevImageBtn.classList.toggle('hidden', currentImageIndex === 0);
+                nextImageBtn.classList.toggle('hidden', currentImageIndex === currentImages.length - 1);
+            };
+
+            const navigateLightbox = (direction) => {
+                currentImageIndex += direction;
+                lightboxImg.src = currentImages[currentImageIndex];
+                updateLightboxNavigation();
+            };
+
+            prevImageBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navigateLightbox(-1);
+            });
+
+            nextImageBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navigateLightbox(1);
             });
 
             const closeImageModal = (event) => {
