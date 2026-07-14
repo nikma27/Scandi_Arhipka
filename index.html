@@ -133,7 +133,7 @@
         <!-- Верхняя часть (Заголовок и логотипы) -->
         <header class="flex flex-row items-center justify-between mb-8 md:mb-12 relative z-10 gap-4 md:gap-8">
             <!-- Левый рисунок (Колосок) -->
-            <div class="md:block w-32 opacity-80">
+            <div class="w-1/4 md:w-32 opacity-80 flex-shrink-0">
                 <svg viewBox="0 0 100 200" fill="none" stroke="currentColor" stroke-width="2" class="w-24 h-auto text-ink">
                     <path d="M50,190 C45,150 40,100 45,50" />
                     <path d="M48,150 C30,130 20,100 40,120" />
@@ -164,7 +164,7 @@
             </div>
 
             <!-- Правый рисунок (Солнце и горы) -->
-            <div class="md:block w-48 opacity-80">
+            <div class="w-1/4 md:w-48 opacity-80 flex-shrink-0">
                  <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-auto text-ink">
                     <line x1="100" y1="40" x2="100" y2="10" stroke-dasharray="2 4"/>
                     <line x1="80" y1="45" x2="60" y2="20" stroke-dasharray="2 4"/>
@@ -290,12 +290,24 @@
                     </p>
                 </div>
 
-                <div class="flex flex-col items-center lg:items-end gap-3 hidden md:flex">
-                    <a href="tel:+79231567969" class="flex items-center gap-3 text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                <div class="flex flex-col items-center lg:items-end gap-3">
+                    <a href="https://t.me/your_telegram_username" target="_blank" class="flex items-center gap-3 text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
                         <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
-                            <i class="fa-solid fa-phone"></i>
+                            <i class="fa-brands fa-telegram"></i>
                         </div>
-                        +7 923 156 7969
+                        Telegram
+                    </a>
+                    <a href="https://wa.me/your_whatsapp_number" target="_blank" class="flex items-center gap-3 text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                        <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        WhatsApp
+                    </a>
+                    <a href="https://instagram.com/your_instagram_username" target="_blank" class="flex items-center gap-3 text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                        <div class="w-10 h-10 rounded-full bg-ink text-paper flex items-center justify-center">
+                            <i class="fa-brands fa-instagram"></i>
+                        </div>
+                        Instagram
                     </a>
                 </div>
                 
