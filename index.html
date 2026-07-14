@@ -131,10 +131,10 @@
     <main class="paper-texture w-full max-w-[1600px] rounded-sm p-4 sm:p-6 md:p-10 lg:p-16 relative overflow-hidden">
         
         <!-- Верхняя часть (Заголовок и логотипы) -->
-        <header class="flex flex-row items-center justify-between mb-8 md:mb-12 relative z-10 gap-4 md:gap-8">
+        <header class="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center mb-8 md:mb-12 relative z-10 gap-2 sm:gap-4 md:gap-8">
             <!-- Левый рисунок (Колосок) -->
-            <div class="w-1/4 md:w-32 opacity-80 flex-shrink-0">
-                <svg viewBox="0 0 100 200" fill="none" stroke="currentColor" stroke-width="2" class="w-24 h-auto text-ink">
+            <div class="flex items-center justify-center w-16 sm:w-20 md:w-24 lg:w-28 opacity-80 flex-shrink-0">
+                <svg viewBox="0 0 100 200" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-auto text-ink scale-[0.75] sm:scale-[0.8] md:scale-[0.85] lg:scale-100">
                     <path d="M50,190 C45,150 40,100 45,50" />
                     <path d="M48,150 C30,130 20,100 40,120" />
                     <path d="M46,120 C20,90 15,60 35,90" />
@@ -150,7 +150,7 @@
             </div>
 
             <!-- Центральный текст -->
-            <div class="text-center flex-1 w-full">
+            <div class="text-center min-w-0">
                 <h2 class="text-xs sm:text-sm md:text-base tracking-[0.2em] sm:tracking-[0.3em] uppercase font-semibold text-ink-light mb-1 sm:mb-2">Гостевой дом</h2>
                 <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-ink tracking-wide mb-1 sm:mb-2">СКАНДИ</h1>
                 
@@ -164,7 +164,7 @@
             </div>
 
             <!-- Правый рисунок (Солнце и горы) -->
-            <div class="w-1/4 md:w-48 opacity-80 flex-shrink-0">
+            <div class="flex items-center justify-center w-16 sm:w-20 md:w-24 lg:w-28 opacity-80 flex-shrink-0">
                  <svg viewBox="0 0 200 100" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-auto text-ink">
                     <line x1="100" y1="40" x2="100" y2="10" stroke-dasharray="2 4"/>
                     <line x1="80" y1="45" x2="60" y2="20" stroke-dasharray="2 4"/>
