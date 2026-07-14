@@ -440,6 +440,50 @@
                 navigateLightbox(1);
             });
 
+            // --- Touch / swipe support for mobile lightbox ---
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let touchMoveX = 0;
+            const TOUCH_THRESHOLD = 50; // px to consider a swipe
+
+            const onTouchStart = (e) => {
+                if (!e.touches || e.touches.length === 0) return;
+                const t = e.touches[0];
+                touchStartX = t.clientX;
+                touchStartY = t.clientY;
+                touchMoveX = 0;
+            };
+
+            const onTouchMove = (e) => {
+                if (!e.touches || e.touches.length === 0) return;
+                const t = e.touches[0];
+                touchMoveX = t.clientX - touchStartX;
+                const dy = Math.abs(t.clientY - touchStartY);
+                // If horizontal movement dominates, prevent vertical scroll while swiping
+                if (Math.abs(touchMoveX) > Math.abs(dy)) {
+                    e.preventDefault();
+                }
+            };
+
+            const onTouchEnd = () => {
+                if (Math.abs(touchMoveX) > TOUCH_THRESHOLD) {
+                    if (touchMoveX < 0) {
+                        navigateLightbox(1); // swipe left -> next
+                    } else {
+                        navigateLightbox(-1); // swipe right -> prev
+                    }
+                }
+                touchStartX = touchStartY = touchMoveX = 0;
+            };
+
+            // Attach touch handlers to the modal and the image for broader hit area
+            imageModal.addEventListener('touchstart', onTouchStart, { passive: false });
+            imageModal.addEventListener('touchmove', onTouchMove, { passive: false });
+            imageModal.addEventListener('touchend', onTouchEnd);
+            lightboxImg.addEventListener('touchstart', onTouchStart, { passive: false });
+            lightboxImg.addEventListener('touchmove', onTouchMove, { passive: false });
+            lightboxImg.addEventListener('touchend', onTouchEnd);
+
             const closeImageModal = (event) => {
                 if (event) event.stopPropagation();
                 imageModal.classList.add('opacity-0');
