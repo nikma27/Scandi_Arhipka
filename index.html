@@ -62,25 +62,43 @@
 
         /* Рваные края фотографий */
         .photo-frame {
-            background: white;
-            padding: 8px 8px 24px 8px;
+            background: transparent;
+            padding: 0.6rem 0.6rem 1.6rem 0.6rem;
             box-shadow: 2px 4px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             cursor: pointer; /* Показывает, что на фото можно нажать */
+            overflow: hidden;
+        }
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url('./assets/images/Рамка.svg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.95;
         }
         .photo-frame::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border: 1px dashed rgba(0,0,0,0.1);
+            inset: 0.35rem;
+            border: 1px dashed rgba(0,0,0,0.12);
+            border-radius: 2px;
             pointer-events: none;
-            margin: 4px;
+            z-index: 2;
         }
         .photo-frame:hover {
             transform: scale(1.05) translateY(-5px) !important;
             box-shadow: 5px 10px 25px rgba(0,0,0,0.3);
             z-index: 10;
+        }
+        .photo-frame:active {
+            transform: scale(0.98) translateY(-2px) !important;
+            box-shadow: 3px 6px 16px rgba(0,0,0,0.22);
         }
         .card-link { text-decoration: none; color: inherit; display: inline-block; }
         .card-link:focus { outline: 3px solid rgba(71,66,56,0.12); outline-offset: 6px; }
@@ -100,17 +118,24 @@
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
         .card .img-wrap {
+            position: relative;
             overflow: hidden;
             border-radius: 2px;
             aspect-ratio: 4/3.9; /* Добавляем aspect-ratio */
         }
         .card img {
             display: block;
-            width: 100%;
-            height: 100%; /* Изменяем на 100% для заполнения контейнера */
+            width: calc(100% - 0.9rem);
+            height: calc(100% - 1.1rem);
+            margin: 0.45rem auto 0.55rem;
             object-fit: cover; /* Добавляем object-fit */
-            transition: transform 0.35s ease-in-out;
+            object-position: center;
+            transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
             will-change: transform;
+            position: relative;
+            z-index: 1;
+            border-radius: 2px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
         }
         .card:hover img {
             transform: scale(1.05);
