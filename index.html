@@ -314,10 +314,13 @@
     </main>
 
     <!-- Скрытое модальное окно для полноэкранного просмотра фото -->
-    <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/90 p-4 opacity-0 transition-opacity duration-300">
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/90 p-4 opacity-0 transition-opacity duration-300">
         <button id="closeModal" class="absolute top-6 right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110">&times;</button>
         <div class="absolute inset-0 flex items-center justify-center p-6">
             <img id="lightboxImg" src="" alt="" class="max-w-full max-h-full object-contain rounded shadow-lg" />
+            <!-- Кнопки навигации -->
+            <button id="prevImage" class="absolute left-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110 hidden">&lt;</button>
+            <button id="nextImage" class="absolute right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110 hidden">&gt;</button>
         </div>
     </div>
 
@@ -351,6 +354,11 @@
             const imageModal = document.getElementById('imageModal');
             const imageClose = document.getElementById('closeModal');
             const lightboxImg = document.getElementById('lightboxImg');
+            const prevImageBtn = document.getElementById('prevImage');
+            const nextImageBtn = document.getElementById('nextImage');
+
+            let currentImages = [];
+            let currentImageIndex = 0;
             const galleryImages = document.querySelectorAll('.card img');
 
             const infoModal = document.getElementById('infoModal');
@@ -380,10 +388,17 @@
                 const frame = e.target.closest('.photo-frame');
                 if (frame && frame.querySelector('img')) {
                     const img = frame.querySelector('img');
-                    lightboxImg.src = img.src;
-                    imageModal.classList.remove('hidden');
-                    imageModal.classList.add('flex');
-                    setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
+                    const cardKey = infoTitle.dataset.cardKey; // Получаем ключ карточки из заголовка модального окна
+                    const data = CARD_DATA[cardKey];
+                    if (data && data.photos) {
+                        currentImages = data.photos;
+                        currentImageIndex = currentImages.indexOf(img.src);
+                        lightboxImg.src = img.src;
+                        imageModal.classList.remove('hidden');
+                        imageModal.classList.add('flex');
+                        setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
+                        updateLightboxNavigation();
+                    }
                 }
             });
 
