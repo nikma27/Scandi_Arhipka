@@ -315,12 +315,12 @@
 
     <!-- Скрытое модальное окно для полноэкранного просмотра фото -->
     <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-black/90 p-4 opacity-0 transition-opacity duration-300">
-        <button id="closeModal" class="absolute top-6 right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110">&times;</button>
+        <button id="closeModal" class="absolute top-6 right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110 z-20">&times;</button>
         <div class="absolute inset-0 flex items-center justify-center p-6">
             <img id="lightboxImg" src="" alt="" class="max-w-full max-h-full object-contain rounded shadow-lg" />
             <!-- Кнопки навигации -->
-            <button id="prevImage" type="button" class="absolute left-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110">&lt;</button>
-            <button id="nextImage" type="button" class="absolute right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110">&gt;</button>
+            <button id="prevImage" class="absolute left-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110 z-20 hidden">&lt;</button>
+            <button id="nextImage" class="absolute right-6 text-white text-5xl hover:text-gray-300 focus:outline-none transition-transform hover:scale-110 z-20 hidden">&gt;</button>
         </div>
     </div>
 
@@ -369,21 +369,6 @@
 
             imageClose.type = 'button';
             infoClose.type = 'button';
-
-            // Open info modal when clicking on the image inside a card
-            galleryImages.forEach(img => {
-                img.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    const card = img.closest('.card');
-                    if (card) {
-                        const key = card.dataset.card;
-                        openInfoModal(key);
-                    }
-                });
-            });
-
-
 
             const closeImageModal = (event) => {
                 if (event) event.stopPropagation();
@@ -502,12 +487,12 @@
                     data.photos.forEach((src, index) => {
                         const div = document.createElement('div');
                         div.className = 'photo-frame w-full aspect-[4/3] cursor-pointer overflow-hidden';
-                        div.innerHTML = `<img src=\"${src}\" class=\"w-full h-full object-cover\" alt=\"Фото номера\" data-original-src=\"${src}\">`;
+                        div.innerHTML = `<img src=\"${src}\" class=\"w-full h-full object-cover\" alt=\"Фото номера\" data-index=\"${index}\">`;
                         // Add click to open lightbox
                         div.addEventListener('click', (e) => {
                             e.stopPropagation();
                             currentImages = data.photos;
-                            currentImageIndex = index;
+                            currentImageIndex = parseInt(e.target.dataset.index); // Используем data-index
                             lightboxImg.src = src;
                             imageModal.classList.remove('hidden');
                             imageModal.classList.add('flex');
