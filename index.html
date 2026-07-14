@@ -405,7 +405,13 @@
             const closeImageModal = (event) => {
                 if (event) event.stopPropagation();
                 imageModal.classList.add('opacity-0');
-                setTimeout(() => { imageModal.classList.add('hidden'); imageModal.classList.remove('flex'); }, 300);
+                setTimeout(() => {
+                    imageModal.classList.add('hidden');
+                    imageModal.classList.remove('flex');
+                    currentImages = [];
+                    currentImageIndex = 0;
+                    updateLightboxNavigation();
+                }, 300);
             };
 
             imageClose.addEventListener('click', closeImageModal);
@@ -504,22 +510,26 @@
                 const data = CARD_DATA[cardKey];
                 if (!data) return;
                 infoTitle.textContent = data.title;
+                infoTitle.dataset.cardKey = cardKey; // Сохраняем ключ карточки в заголовке модального окна
                 infoContent.innerHTML = data.html;
                 
                 // Clear and fill photo grid
                 photoGrid.innerHTML = '';
                 if (data.photos && data.photos.length > 0) {
-                    data.photos.forEach(src => {
+                    data.photos.forEach((src, index) => {
                         const div = document.createElement('div');
                         div.className = 'photo-frame w-full aspect-[4/3] cursor-pointer overflow-hidden';
                         div.innerHTML = `<img src="${src}" class="w-full h-full object-cover" alt="Фото номера">`;
                         // Add click to open lightbox
                         div.addEventListener('click', (e) => {
                             e.stopPropagation();
+                            currentImages = data.photos;
+                            currentImageIndex = index;
                             lightboxImg.src = src;
                             imageModal.classList.remove('hidden');
                             imageModal.classList.add('flex');
                             setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
+                            updateLightboxNavigation();
                         });
                         photoGrid.appendChild(div);
                     });
@@ -551,6 +561,13 @@
                 if (e.key === 'Escape') {
                     if (!imageModal.classList.contains('hidden')) closeImageModal();
                     if (!infoModal.classList.contains('hidden')) closeInfo();
+                }
+                if (!imageModal.classList.contains('hidden')) {
+                    if (e.key === 'ArrowLeft') {
+                        navigateLightbox(-1);
+                    } else if (e.key === 'ArrowRight') {
+                        navigateLightbox(1);
+                    }
                 }
             });
         });
