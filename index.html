@@ -409,6 +409,11 @@
 
             const navigateLightbox = (direction) => {
                 currentImageIndex += direction;
+                if (currentImageIndex < 0) {
+                    currentImageIndex = currentImages.length - 1;
+                } else if (currentImageIndex >= currentImages.length) {
+                    currentImageIndex = 0;
+                }
                 lightboxImg.src = currentImages[currentImageIndex];
                 updateLightboxNavigation();
             };
