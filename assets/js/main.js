@@ -119,11 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
         touchStartX = touchStartY = touchMoveX = 0;
     };
 
-    imageModal.addEventListener('touchstart', onTouchStart, { passive: false });
-    imageModal.addEventListener('touchmove', onTouchMove, { passive: false });
+    imageModal.addEventListener('touchstart', onTouchStart, { passive: true });
+    imageModal.addEventListener('touchmove', onTouchMove, { passive: true });
     imageModal.addEventListener('touchend', onTouchEnd);
-    lightboxImg.addEventListener('touchstart', onTouchStart, { passive: false });
-    lightboxImg.addEventListener('touchmove', onTouchMove, { passive: false });
+    lightboxImg.addEventListener('touchstart', onTouchStart, { passive: true });
+    lightboxImg.addEventListener('touchmove', onTouchMove, { passive: true });
     lightboxImg.addEventListener('touchend', onTouchEnd);
 
     const closeImageModal = (event) => {
@@ -244,6 +244,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const openInfoModal = (cardKey) => {
         const data = CARD_DATA[cardKey];
         if (!data) return;
+        const preloadImage = (src) => {
+            const img = new Image();
+            img.src = src;
+        };
+        if (data.photos && data.photos.length > 0) {
+            preloadImage(data.photos[0]);
+        }
         infoTitle.textContent = data.title;
         infoTitle.dataset.cardKey = cardKey;
         infoContent.innerHTML = data.html;

@@ -29,8 +29,8 @@ body {
     margin: 4px;
 }
 .photo-frame:hover {
-    transform: scale(1.05) translateY(-5px) !important;
-    box-shadow: 5px 10px 25px rgba(0,0,0,0.3);
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 3px 8px 18px rgba(0,0,0,0.22);
     z-index: 10;
 }
 .card-link { text-decoration: none; color: inherit; display: inline-block; }
@@ -62,7 +62,7 @@ body {
     will-change: transform;
 }
 .card:hover img {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 .card .card-body {
     display: flex;
@@ -110,3 +110,12 @@ body {
 }
 #infoModal .info-desc { font-size: clamp(0.95rem, 1.6vw, 1.05rem); color: #4a453d; }
 #infoModal .placeholder { min-height: 200px; border: 2px dashed rgba(71,66,56,0.12); border-radius: 6px; margin-top: 1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
