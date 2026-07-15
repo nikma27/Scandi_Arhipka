@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Placeholder image">
+  <rect width="1200" height="800" fill="#f4e8c1"/>
+  <rect x="40" y="40" width="1120" height="720" rx="24" fill="#fffdf7" stroke="#b8a37d" stroke-width="6"/>
+  <path d="M150 580c70-120 180-190 310-190 100 0 185 40 280 110 70 50 140 80 220 80 58 0 115-16 160-48V720H150Z" fill="#e7d7b0"/>
+  <circle cx="340" cy="330" r="90" fill="#d7b679"/>
+  <path d="M560 300c40-80 120-120 220-120 90 0 160 35 220 110" stroke="#8c6b3b" stroke-width="18" fill="none" stroke-linecap="round"/>
+  <text x="600" y="430" text-anchor="middle" font-family="Georgia, serif" font-size="48" fill="#5c4932">Изображение временно недоступно</text>
+</svg>

@@ -6,6 +6,11 @@
     <meta name="description" content="Гостевой дом Сканди в Архипо-Осиповке — уютное место для отдыха рядом с морем, комфортные номера для семьи, пары и компании.">
     <meta name="keywords" content="гостевой дом Архипо-Осиповка, гостевой дом Сканди, отдых у моря, комфортные номера, семейный отдых, аренда номера Архипо-Осиповка">
     <meta name="robots" content="index,follow">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none';">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta property="og:title" content="Гостевой дом Сканди — комфортный отдых в Архипо-Осиповке">
     <meta property="og:description" content="Уютный гостевой дом рядом с морем в Архипо-Осиповке. Комфортные номера для семьи, пары и компании.">
     <meta property="og:type" content="website">
@@ -43,126 +48,7 @@
             }
         }
     </script>
-    <style>
-        /* Стилизация фона страницы */
-        body {
-            background-image: url('./assets/images/fon1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            min-height: 100vh;
-        }
-
-        /* Текстура пергаментной бумаги */
-        .paper-texture {
-            background-color: #f4e8c1;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.15' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 60px rgba(139, 115, 85, 0.3);
-        }
-
-        /* Рваные края фотографий */
-        .photo-frame {
-            background: white;
-            padding: 8px 8px 24px 8px;
-            box-shadow: 2px 4px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            cursor: pointer; /* Показывает, что на фото можно нажать */
-        }
-        .photo-frame::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border: 1px dashed rgba(0,0,0,0.1);
-            pointer-events: none;
-            margin: 4px;
-        }
-        .photo-frame:hover {
-            transform: scale(1.05) translateY(-5px) !important;
-            box-shadow: 5px 10px 25px rgba(0,0,0,0.3);
-            z-index: 10;
-        }
-        .card-link { text-decoration: none; color: inherit; display: inline-block; }
-        .card-link:focus { outline: 3px solid rgba(71,66,56,0.12); outline-offset: 6px; }
-        /* Рваные края для фото */
-        .torn-edge {
-            mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 H200 V200 H0 Z' fill='black'/%3E%3Cpath d='M0,10 Q5,5 10,10 T20,10 T30,10 T40,10 T50,10 T60,10 T70,10 T80,10 T90,10 T100,10 T110,10 T120,10 T130,10 T140,10 T150,10 T160,10 T170,10 T180,10 T190,10 T200,10' fill='white'/%3E%3C/svg%3E");
-            mask-size: 100% 100%;
-            mask-repeat: no-repeat;
-        }
-        /* Gallery grid and card layout */
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            background: transparent;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
-        .card .img-wrap {
-            overflow: hidden;
-            border-radius: 2px;
-            aspect-ratio: 4/3.9; /* Добавляем aspect-ratio */
-        }
-        .card img {
-            display: block;
-            width: 100%;
-            height: 100%; /* Изменяем на 100% для заполнения контейнера */
-            object-fit: cover; /* Добавляем object-fit */
-            transition: transform 0.35s ease-in-out;
-            will-change: transform;
-        }
-        .card:hover img {
-            transform: scale(1.05);
-        }
-        .card .card-body {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            flex-grow: 1; /* Добавляем flex-grow для выталкивания контента */
-            justify-content: space-between; /* Распределяем пространство между элементами */
-        }
-        .card .card-body p { /* Заголовок карточки */
-            min-height: 3.5em; /* Примерное значение, может потребоваться корректировка */
-            display: -webkit-box;
-            -webkit-line-clamp: 2; /* Ограничиваем до 2 строк */
-            line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 0.75rem;
-            min-height: 2.75rem;
-            line-height: 1.2;
-            width: 100%;
-            max-width: 13rem;
-            padding-inline: 0.25rem;
-        }
-        .social-icon {
-            width: 2.75rem;
-            height: 2.75rem;
-            min-width: 2.75rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9999px;
-            background-color: #332f29;
-            color: #eaddc6;
-            flex-shrink: 0;
-        }
-        .social-icon i,
-        .social-icon svg {
-            font-size: 1.05rem;
-            line-height: 1;
-        }
-        /* Info modal typography and placeholder */
-        #infoModal .info-desc { font-size: clamp(0.95rem, 1.6vw, 1.05rem); color: #4a453d; }
-        #infoModal .placeholder { min-height: 200px; border: 2px dashed rgba(71,66,56,0.12); border-radius: 6px; margin-top: 1rem; }
-    </style>
+    <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
     <body class="flex items-center justify-center p-2 sm:p-4 md:p-8 font-sans text-ink">
 
@@ -224,7 +110,7 @@
 
                 <article class="card card-link text-center cursor-pointer group" data-card="card1" aria-label="Номер для четверых +1 гостей">
                     <div class="img-wrap photo-frame -rotate-2 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
-                        <img src="./assets/images/P1370468.jpg" onerror="this.src='https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop'" alt="Интерьер" class="w-full h-40 md:h-48 lg:h-56 object-cover">
+                        <img src="./assets/images/P1370468.jpg" onerror="this.src='./assets/images/placeholder.svg'" alt="Интерьер" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
                     <div class="card-body mt-4">
                         <p class="font-handwriting text-xl md:text-2xl lg:text-3xl text-ink">Номер для четверых +1 гостей</p>
@@ -233,7 +119,7 @@
 
                 <article class="card card-link text-center cursor-pointer group" data-card="card2" aria-label="Номера для троих гостей">
                     <div class="img-wrap photo-frame rotate-3 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
-                        <img src="./assets/images/P1370569.jpg" onerror="this.src='https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?q=80&w=800&auto=format&fit=crop'" alt="Декор" class="w-full h-40 md:h-48 lg:h-56 object-cover">
+                        <img src="./assets/images/P1370569.jpg" onerror="this.src='./assets/images/placeholder.svg'" alt="Декор" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
                     <div class="card-body mt-4">
                         <p class="font-handwriting text-xl md:text-2xl lg:text-3xl text-ink">Номера для троих гостей</p>
@@ -242,7 +128,7 @@
 
                 <article class="card card-link text-center cursor-pointer group" data-card="card3" aria-label="Номера для двоих гостей">
                     <div class="img-wrap photo-frame -rotate-1 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
-                        <img src="./assets/images/P1370518.jpg" onerror="this.src='https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop'" alt="Фасад гостевого дома" class="w-full h-48 md:h-56 lg:h-64 object-cover">
+                        <img src="./assets/images/P1370518.jpg" onerror="this.src='./assets/images/placeholder.svg'" alt="Фасад гостевого дома" class="w-full h-48 md:h-56 lg:h-64 object-cover">
                     </div>
                     <div class="card-body mt-4">
                         <p class="font-handwriting text-xl md:text-2xl lg:text-3xl text-ink">Номера для двоих гостей</p>
@@ -251,7 +137,7 @@
 
                 <article class="card card-link text-center cursor-pointer group" data-card="card4" aria-label="Все удобства нашего гостевого дома">
                     <div class="img-wrap photo-frame rotate-2 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
-                        <img src="./assets/images/P1370464.jpg" onerror="this.src='https://images.unsplash.com/photo-1416879598555-53dfad6094dd?q=80&w=800&auto=format&fit=crop'" alt="Вид" class="w-full h-40 md:h-48 lg:h-56 object-cover">
+                        <img src="./assets/images/P1370464.jpg" onerror="this.src='./assets/images/placeholder.svg'" alt="Вид" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
                     <div class="card-body mt-4">
                         <p class="font-handwriting text-xl md:text-2xl lg:text-3xl text-ink">Все удобства нашего гостевого дома</p>
@@ -260,7 +146,7 @@
 
                 <article class="card card-link text-center cursor-pointer group" data-card="card5" aria-label="Правила размещения">
                     <div class="img-wrap photo-frame -rotate-3 w-full overflow-hidden transition-transform duration-300 group-hover:scale-105 group-hover:shadow-xl">
-                        <img src="./assets/images/P1370489.jpg" onerror="this.src='https://images.unsplash.com/photo-1499933374294-4584d31509bf?q=80&w=800&auto=format&fit=crop'" alt="Детали" class="w-full h-40 md:h-48 lg:h-56 object-cover">
+                        <img src="./assets/images/P1370489.jpg" onerror="this.src='./assets/images/placeholder.svg'" alt="Детали" class="w-full h-40 md:h-48 lg:h-56 object-cover">
                     </div>
                     <div class="card-body mt-4">
                         <p class="font-handwriting text-xl md:text-2xl lg:text-3xl text-ink">Правила размещения</p>
@@ -330,19 +216,19 @@
                 </div>
 
                 <div class="flex flex-col items-center lg:items-end gap-3 w-full lg:w-auto">
-                    <a href="https://t.me/nikma23" target="_blank" class="social-link text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                    <a href="https://t.me/nikma23" target="_blank" rel="noopener noreferrer" class="social-link text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
                         <span class="social-icon">
                             <i class="fa-brands fa-telegram"></i>
                         </span>
                         Telegram
                     </a>
-                    <a href="https://max.ru/u/f9LHodD0cOJ7EGK8pGcLrbpz043_dHLFqvbQT8GVApa-p2ZnHJG8naomUxY" target="_blank" class="social-link text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                    <a href="https://max.ru/u/f9LHodD0cOJ7EGK8pGcLrbpz043_dHLFqvbQT8GVApa-p2ZnHJG8naomUxY" target="_blank" rel="noopener noreferrer" class="social-link text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
                         <span class="social-icon">
                             <i class="fa-brands fa-telegram"></i>
                         </span>
                         Max
                     </a>
-                    <a href="https://www.instagram.com/scandi_arhipka?igsh=aDQ5Yzh2am1mcjYy" target="_blank" class="social-link text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
+                    <a href="https://www.instagram.com/scandi_arhipka?igsh=aDQ5Yzh2am1mcjYy" target="_blank" rel="noopener noreferrer" class="social-link text-xl md:text-2xl font-serif font-bold text-ink hover:text-amber-700 transition">
                         <span class="social-icon">
                             <i class="fa-brands fa-instagram"></i>
                         </span>
@@ -415,311 +301,6 @@
         }
     </script>
 
-    <!-- Скрипт для работы галереи и карточек -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const imageModal = document.getElementById('imageModal');
-            const imageClose = document.getElementById('closeModal');
-            const lightboxImg = document.getElementById('lightboxImg');
-            const prevImageBtn = document.getElementById('prevImage');
-            const nextImageBtn = document.getElementById('nextImage');
-
-            let currentImages = [];
-            let currentImageIndex = 0;
-            const galleryImages = document.querySelectorAll('.card img');
-
-            const infoModal = document.getElementById('infoModal');
-            const infoClose = document.getElementById('infoClose');
-            const infoTitle = document.getElementById('infoTitle');
-            const infoContent = document.getElementById('infoContent');
-            const photoGrid = document.getElementById('photoGrid');
-
-            imageClose.type = 'button';
-            infoClose.type = 'button';
-
-            // Open info modal when clicking on the image inside a card
-            galleryImages.forEach(img => {
-                img.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    const card = img.closest('.card');
-                    if (card) {
-                        const key = card.dataset.card;
-                        openInfoModal(key);
-                    }
-                });
-            });
-
-            // Lightbox for photos inside info modal
-            photoGrid.addEventListener('click', (e) => {
-                const frame = e.target.closest('.photo-frame');
-                if (frame && frame.querySelector('img')) {
-                    const img = frame.querySelector('img');
-                    const cardKey = infoTitle.dataset.cardKey; // Получаем ключ карточки из заголовка модального окна
-                    const data = CARD_DATA[cardKey];
-                    if (data && data.photos) {
-                        currentImages = data.photos;
-                        currentImageIndex = currentImages.indexOf(img.src);
-                        lightboxImg.src = img.src;
-                        imageModal.classList.remove('hidden');
-                        imageModal.classList.add('flex');
-                        setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
-                        updateLightboxNavigation();
-                    }
-                }
-            });
-
-            const updateLightboxNavigation = () => {
-                prevImageBtn.classList.toggle('hidden', currentImageIndex === 0);
-                nextImageBtn.classList.toggle('hidden', currentImageIndex === currentImages.length - 1);
-            };
-
-            const navigateLightbox = (direction) => {
-                currentImageIndex += direction;
-                if (currentImageIndex < 0) {
-                    currentImageIndex = currentImages.length - 1;
-                } else if (currentImageIndex >= currentImages.length) {
-                    currentImageIndex = 0;
-                }
-                lightboxImg.src = currentImages[currentImageIndex];
-                updateLightboxNavigation();
-            };
-
-            prevImageBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navigateLightbox(-1);
-            });
-
-            nextImageBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navigateLightbox(1);
-            });
-
-            // --- Touch / swipe support for mobile lightbox ---
-            let touchStartX = 0;
-            let touchStartY = 0;
-            let touchMoveX = 0;
-            const TOUCH_THRESHOLD = 50; // px to consider a swipe
-
-            const onTouchStart = (e) => {
-                if (!e.touches || e.touches.length === 0) return;
-                const t = e.touches[0];
-                touchStartX = t.clientX;
-                touchStartY = t.clientY;
-                touchMoveX = 0;
-            };
-
-            const onTouchMove = (e) => {
-                if (!e.touches || e.touches.length === 0) return;
-                const t = e.touches[0];
-                touchMoveX = t.clientX - touchStartX;
-                const dy = Math.abs(t.clientY - touchStartY);
-                // If horizontal movement dominates, prevent vertical scroll while swiping
-                if (Math.abs(touchMoveX) > Math.abs(dy)) {
-                    e.preventDefault();
-                }
-            };
-
-            const onTouchEnd = () => {
-                if (Math.abs(touchMoveX) > TOUCH_THRESHOLD) {
-                    if (touchMoveX < 0) {
-                        navigateLightbox(1); // swipe left -> next
-                    } else {
-                        navigateLightbox(-1); // swipe right -> prev
-                    }
-                }
-                touchStartX = touchStartY = touchMoveX = 0;
-            };
-
-            // Attach touch handlers to the modal and the image for broader hit area
-            imageModal.addEventListener('touchstart', onTouchStart, { passive: false });
-            imageModal.addEventListener('touchmove', onTouchMove, { passive: false });
-            imageModal.addEventListener('touchend', onTouchEnd);
-            lightboxImg.addEventListener('touchstart', onTouchStart, { passive: false });
-            lightboxImg.addEventListener('touchmove', onTouchMove, { passive: false });
-            lightboxImg.addEventListener('touchend', onTouchEnd);
-
-            const closeImageModal = (event) => {
-                if (event) event.stopPropagation();
-                imageModal.classList.add('opacity-0');
-                setTimeout(() => {
-                    imageModal.classList.add('hidden');
-                    imageModal.classList.remove('flex');
-                    currentImages = [];
-                    currentImageIndex = 0;
-                    updateLightboxNavigation();
-                }, 300);
-            };
-
-            imageClose.addEventListener('click', closeImageModal);
-            imageModal.addEventListener('click', (e) => { if (e.target === imageModal) closeImageModal(); });
-
-            // Card links -> open info modal with specific content
-            const cardLinks = document.querySelectorAll('.card');
-
-            const CARD_DATA = {
-                card1: {
-                    title: 'Номера для четверых +1 гостей',
-                    html: `
-                        <h4 class="font-serif text-xl mb-2">Уютный семейный номер</h4>
-                        <p class="mb-3">Светлое и элегантное пространство, созданное для комфортного отдыха семьи или компании до пяти человек. Мы бережно продумали каждую деталь, чтобы вы могли насладиться атмосферой спокойствия и уюта.</p>
-                        <h5 class="font-semibold mb-2">К вашим услугам:</h5>
-                        <ul class="list-disc ml-5 mb-3">
-                            <li>Двуспальная кровать, двухъярусная кровать и дополнительное спальное место.</li>
-                            <li>Мини-кухня с холодильником и уютной обеденной зоной.</li>
-                            <li>Современный кондиционер для идеального микроклимата и Smart-TV.</li>
-                            <li>Индивидуальная ванная комната с душевой кабиной.</li>
-                        </ul>
-                    `,
-                    photos: [
-                        './assets/images/P1370476.jpg',
-                        './assets/images/P1370477.jpg',
-                        './assets/images/P1370484.jpg',
-                        './assets/images/P1370578.jpg',
-                        './assets/images/P1370582.jpg',
-                        './assets/images/P1370589.jpg'
-                    ]
-                },
-                card2: {
-                    title: 'Трехместные номера',
-                    html: `
-                        <h4 class="font-serif text-xl mb-2">Уютный трехместный номер</h4>
-                        <p class="mb-3">Светлое и элегантное пространство, созданное для комфортного отдыха семьи или небольшой компании до трех человек. Мы бережно продумали каждую деталь, чтобы вы могли насладиться атмосферой спокойствия и уюта.</p>
-                        <h5 class="font-semibold mb-2">К вашим услугам:</h5>
-                        <ul class="list-disc ml-5 mb-3">
-                            <li>Двуспальная кровать и комфортное раскладное кресло-кровать.</li>
-                            <li>Холодильник для хранения ваших продуктов и напитков.</li>
-                            <li>Современный кондиционер для идеального микроклимата и Smart-TV.</li>
-                            <li>Индивидуальная ванная комната с душевой кабиной.</li>
-                        </ul>
-                    `,
-                    photos: [
-                        './assets/images/P1370497.jpg',
-                        './assets/images/P1370499.jpg',
-                        './assets/images/P1370502.jpg',
-                        './assets/images/P1370507.jpg',
-                        './assets/images/P1370565.jpg',
-                        './assets/images/P1370572.jpg'
-                    ]
-                },
-                card3: {
-                    title: 'Номера для двоих гостей',
-                    html: `
-                        <h4 class="font-serif text-xl mb-2">Уютный двухместный номер</h4>
-                        <p class="mb-3">Светлое и элегантное пространство, созданное для комфортного отдыха пары или двух гостей. Мы бережно продумали каждую деталь, чтобы вы могли насладиться атмосферой спокойствия и уюта.</p>
-                        <h5 class="font-semibold mb-2">К вашим услугам:</h5>
-                        <ul class="list-disc ml-5 mb-3">
-                            <li>Удобная двуспальная кровать.</li>
-                            <li>Холодильник для хранения ваших продуктов и напитков.</li>
-                            <li>Современный кондиционер для идеального микроклимата и Smart-TV.</li>
-                            <li>Индивидуальная ванная комната с душевой кабиной.</li>
-                        </ul>
-                    `,
-                    photos: [
-                        './assets/images/P1370519.jpg',
-                        './assets/images/P1370521.jpg',
-                        './assets/images/P1370534.jpg',
-                        './assets/images/P1370539.jpg',
-                        './assets/images/P1370554.jpg',
-                        './assets/images/P1370555.jpg'
-                    ]
-                },
-                card4: {
-                    title: 'Все удобства нашего гостевого дома',
-                    html: `<p class="mb-3">Перечень основных удобств, доступных всем гостям.</p>`,
-                    photos: [
-                        './assets/images/Gemini_Generated_Image_9cj59z9cj59z9cj5.png',
-                        './assets/images/P1370451.jpg',
-                        './assets/images/photo_2026-05-24_20-58-38.jpg',
-                        './assets/images/photo_2026-05-24_20-58-57.jpg',
-                        './assets/images/photo_2026-06-01_00-57-13.jpg',
-                        './assets/images/photo_2026-06-01_01-14-31.jpg'
-                    ]
-                },
-                card5: {
-                    title: 'Правила размещения',
-                    html: `
-                        <p class="mb-3">Добро пожаловать в наш гостевой дом! Мы очень рады каждому гостю и делаем все, чтобы ваш отдых был комфортным и спокойным. Просим вас придерживаться нескольких простых правил, которые помогут сохранить уютную атмосферу для всех.</p>
-                        <ul class="list-disc ml-5 mb-3 space-y-2">
-                            <li>Заезд возможен <strong>с 14:00</strong>, выезд — <strong>до 12:00</strong>.</li>
-                            <li>Если вам нужен ранний заезд или поздний выезд, пожалуйста, заранее свяжитесь с нами — мы обязательно постараемся подобрать удобный вариант.</li>
-                            <li>Парковка на территории доступна для гостей и составляет <strong>200 рублей в сутки</strong>.</li>
-                            <li>В номерах нельзя курить, но на территории есть специально отведенное место для курения.</li>
-                            <li>Просим соблюдать тишину в номерах и на территории с <strong>22:00 до 08:00</strong>, чтобы каждый гость мог хорошо отдохнуть.</li>
-                            <li>Мы любим животных, но, к сожалению, размещение с домашними питомцами у нас не предусмотрено. Благодарим за понимание.</li>
-                            <li>Мы всегда рады маленьким гостям, однако просим родителей внимательно следить за детьми на территории гостевого дома.</li>
-                            <li>Проживание с детьми до 2 лет обсуждается индивидуально.</li>
-                        </ul>
-                    `,
-                    photos: []
-                }
-            };
-
-            const openInfoModal = (cardKey) => {
-                const data = CARD_DATA[cardKey];
-                if (!data) return;
-                infoTitle.textContent = data.title;
-                infoTitle.dataset.cardKey = cardKey; // Сохраняем ключ карточки в заголовке модального окна
-                infoContent.innerHTML = data.html;
-                
-                // Clear and fill photo grid
-                photoGrid.innerHTML = '';
-                if (data.photos && data.photos.length > 0) {
-                    data.photos.forEach((src, index) => {
-                        const div = document.createElement('div');
-                        div.className = 'photo-frame w-full aspect-[4/3] cursor-pointer overflow-hidden';
-                        div.innerHTML = `<img src="${src}" class="w-full h-full object-cover" alt="Фото номера">`;
-                        // Add click to open lightbox
-                        div.addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            currentImages = data.photos;
-                            currentImageIndex = index;
-                            lightboxImg.src = src;
-                            imageModal.classList.remove('hidden');
-                            imageModal.classList.add('flex');
-                            setTimeout(() => imageModal.classList.remove('opacity-0'), 10);
-                            updateLightboxNavigation();
-                        });
-                        photoGrid.appendChild(div);
-                    });
-                }
-
-                infoModal.classList.remove('hidden');
-                infoModal.classList.add('flex');
-                setTimeout(() => infoModal.classList.remove('opacity-0'), 10);
-            };
-
-            cardLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const key = link.dataset.card;
-                    openInfoModal(key);
-                });
-            });
-
-            const closeInfo = (event) => {
-                if (event) event.stopPropagation();
-                infoModal.classList.add('opacity-0');
-                setTimeout(() => { infoModal.classList.add('hidden'); infoModal.classList.remove('flex'); }, 300);
-            };
-
-            infoClose.addEventListener('click', closeInfo);
-            infoModal.addEventListener('click', (e) => { if (e.target === infoModal) closeInfo(); });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    if (!imageModal.classList.contains('hidden')) closeImageModal();
-                    if (!infoModal.classList.contains('hidden')) closeInfo();
-                }
-                if (!imageModal.classList.contains('hidden')) {
-                    if (e.key === 'ArrowLeft') {
-                        navigateLightbox(-1);
-                    } else if (e.key === 'ArrowRight') {
-                        navigateLightbox(1);
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
