@@ -9,6 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImageIndex = 0;
     const galleryImages = document.querySelectorAll('.card img');
 
+    const applyImageFallback = (img) => {
+        if (!img) return;
+        img.addEventListener('error', () => {
+            if (img.getAttribute('src') !== './assets/images/placeholder.svg') {
+                img.src = './assets/images/placeholder.svg';
+            }
+        });
+    };
+
+    galleryImages.forEach(applyImageFallback);
+
     const infoModal = document.getElementById('infoModal');
     const infoClose = document.getElementById('infoClose');
     const infoTitle = document.getElementById('infoTitle');
@@ -242,7 +253,8 @@ document.addEventListener('DOMContentLoaded', () => {
             data.photos.forEach((src, index) => {
                 const div = document.createElement('div');
                 div.className = 'photo-frame w-full aspect-[4/3] cursor-pointer overflow-hidden';
-                div.innerHTML = `<img src="${src}" class="w-full h-full object-cover" alt="Фото номера">`;
+                div.innerHTML = `<img src="${src}" class="w-full h-full object-cover" alt="Фото номера" loading="lazy" decoding="async">`;
+                applyImageFallback(div.querySelector('img'));
                 div.addEventListener('click', (e) => {
                     e.stopPropagation();
                     currentImages = data.photos;
